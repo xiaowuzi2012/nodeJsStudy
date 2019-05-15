@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <script src="../util/jquery.js" charset="utf-8"></script>
+  <script>
+    $(function () {
+      $('#txt1').on('input', function () {
+        $.ajax({
+          url: 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su',
+          data: {
+            wd: $(this).val()
+          },
+          dataType: 'jsonp',
+          // 服务器返回的回调函数标记
+          jsonp: 'cb'
+        }).then((resp) => {
+          let {s} = resp;
+          console.log(s);
+        }, res => {
+          alert('失败');
+        });
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <input type="text" id="txt1">
+</body>
+
+</html>
